@@ -59,55 +59,70 @@ Explanation 3:
  */
 
 public class SpiralMatrix {
-    public int[][] generateMatrix(int A) {
-        int[][] sMat = new int[A][A];
-        int start = 1;
+
+    public static void main(String[] args)
+    {
+        int[] A = {1,2,4,8};
+        int B = 4;
+        int C = 1;
+        int[][] result = generateMatrix(A, B, C);
+        for(int i = 0; i < B; i++)
+        {
+            for(int j = 0; j < C; j++)
+            {
+                System.out.println(result[i][j]+" ");
+            }
+            System.out.print("");
+        }
+    }
+
+    public static int[][] generateMatrix(int[] A,int B, int C) {
+        
+        int[][] sMat = new int[C][B];
         int row = 0;
         int col = 0;
-        int N = sMat.length;
+        int N = C;
+        int i = 0;
         while(N>1)
         {
-            for(int k = 0; k < N; k++)
+            for(int k =0 ; k < C; k++)
             {
-                sMat[row][col] = start;
-                start++;
+                sMat[row][col] = A[i];
+                i++;
                 col++;
             }
             col--;
             row++;
-
-            for(int k = 0; k < N -1; k++)
+            for(int k = 0;k<B-1;k++)
             {
-                sMat[row][col] = start;
-                start++;
+                sMat[row][col] = A[i];
+                i++;
                 row++;
             }
             row--;
             col--;
-
-            for(int k = 0; k < N -1; k++)
+            for(int k = 0; k < C-1; k++)
             {
-                sMat[row][col] = start;
-                start++;
+                sMat[row][col] = A[i];
+                i++;
                 col--;
             }
             col++;
             row--;
-
-            for(int k = 0; k < N -2; k++)
+            for(int k = 0; k<B-2; k++)
             {
-                sMat[row][col] = start;
-                start++;
+                sMat[row][col] = A[i];
+                i++;
                 row--;
             }
             col++;
             row++;
-            N -= 2;
+            N-=2;
+            
         }
         if(N == 1)
         {
-            sMat[row][col] = start;
-            
+            sMat[row][col] = A[i];
         }
         return sMat;
     }
